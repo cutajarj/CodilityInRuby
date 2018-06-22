@@ -16,4 +16,4 @@ def solution(a)
 	if occurance > (a.length/2) then a.find_index(candidate) else -1 end
 end
 
-puts solution([])
+puts solution([3,0,1,1,4,1,1])
