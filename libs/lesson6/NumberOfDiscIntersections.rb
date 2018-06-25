@@ -12,18 +12,7 @@ def indexLessThan(sortedDiskList, i, start, last)
 	end
 end
 
-class Disk
-	def initialize(x1, x2)
-		@low_x = x1
-		@high_x = x2
-	end
-	def to_s
-		"#{low_x}:#{high_x}"
-	end
-	attr_accessor :low_x
-	attr_accessor :high_x
-
-end
+Disk = Struct.new(:low_x, :high_x)
 
 def solution(a)
 	disks = a.each_with_index.map { |x,i| Disk.new(i - x,i + x)}.sort_by{|ds| ds.low_x}
