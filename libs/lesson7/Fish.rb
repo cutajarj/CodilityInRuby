@@ -1,5 +1,4 @@
-
-def solution(a, b) 
+def solution(a, b)
   stack = []
   survivors = 0
   for i in 0..a.length - 1 do

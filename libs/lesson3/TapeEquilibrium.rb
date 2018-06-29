@@ -1,8 +1,8 @@
 def solution(a)
   sum_left = a[0]
-  sum_right = a.inject(0){|sum,x| sum + x } - a[0]
+  sum_right = a.inject(0) {|sum, x| sum + x} - a[0]
   diff = (sum_left - sum_right).abs
-  for i in (1..a.length-2) do
+  for i in (1..a.length - 2) do
     sum_left += a[i]
     sum_right -= a[i]
     current_diff = (sum_left - sum_right).abs
@@ -11,4 +11,4 @@ def solution(a)
   diff
 end
 
-puts solution([3,1,2,4,3])
+puts solution([3, 1, 2, 4, 3])
