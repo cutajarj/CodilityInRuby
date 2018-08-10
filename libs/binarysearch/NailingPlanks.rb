@@ -1,3 +1,7 @@
+# This is the solution for Binary Search > Nailing Planks
+#
+# This is marked as RESPECTABLE difficulty
+
 class NailingPlanks
   def solution(a, b, c)
     start = 0
