@@ -5,10 +5,9 @@
 class CountDistinctSlices
   def solution(m, a)
     total_slices = 0
-    in_current_slice = Array.new(m, false)
+    in_current_slice = Array.new(m + 1, false)
     head = 0
     for tail in 0..a.size - 1 do
-      new_slice = false
       while head < a.size && !in_current_slice[a[head]] do
         in_current_slice[a[head]] = true
         head += 1
@@ -30,3 +29,5 @@ puts CountDistinctSlices.new.solution(6, [5, 3, 4, 2, 5])
 puts CountDistinctSlices.new.solution(6, [5, 5, 5, 4, 5])
 
 puts CountDistinctSlices.new.solution(6, [5])
+
+puts CountDistinctSlices.new.solution(1, [0, 1])
