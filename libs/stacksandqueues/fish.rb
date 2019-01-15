@@ -26,5 +26,4 @@ class Fish
   end
 end
 
-
 puts Fish.new.solution([4, 8, 2, 6, 7], [0, 1, 1, 0, 0])
