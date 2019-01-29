@@ -1,37 +1,31 @@
-# This is the solution for Sorting > NumberOfDiscIntersections
+# This is the solution for Sorting > NumberOfDiscIntersectionsAlt
 #
 # This is marked as RESPECTABLE difficulty
 
 class NumberOfDiscIntersections
-  def index_less_than(sortedDiskList, i, start, last)
-    mid = start + (last - start) / 2
-    case
-    when last <= start && sortedDiskList[mid].low_x > i
-      mid - 1
-    when last <= start
-      mid
-    when sortedDiskList[mid].low_x > i
-      index_less_than(sortedDiskList, i, start, mid - 1)
-    else
-      index_less_than(sortedDiskList, i, mid + 1, last)
-    end
-  end
-
-  Disk = Struct.new(:low_x, :high_x)
+  Disc = Struct.new(:x, :start_end)
 
   def solution(a)
-    disks = a.each_with_index.map {|x, i| Disk.new(i - x, i + x)}.sort_by {|ds| ds.low_x}
-    total = 0
-    for i in 0..disks.length - 1 do
-      total += index_less_than(disks, disks[i].high_x + 0.5, 0, disks.length - 1) - i
-      if total > 10000000
-        total = -1
+    disc_history = Array.new(a.length * 2)
+    j = 0
+    for i in 0..a.length - 1 do
+      disc_history[j] = Disc.new(i - a[i], 1)
+      disc_history[j + 1] = Disc.new(i + a[i], -1)
+      j += 2
+    end
+    disc_history = disc_history.sort_by {|a| a.x * 10 - a.start_end}
+    intersections = 0
+    active_intersections = 0
+    for log in disc_history do
+      active_intersections += log.start_end
+      intersections += active_intersections - 1 if log.start_end > 0
+      if intersections > 10000000
+        intersections = -1
         break
       end
     end
-    total
+    intersections
   end
 end
-
 
 puts NumberOfDiscIntersections.new.solution([1, 5, 2, 1, 4, 0])
