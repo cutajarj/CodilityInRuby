@@ -13,7 +13,8 @@ class NumberOfDiscIntersections
       disc_history[j + 1] = Disc.new(i + a[i], -1)
       j += 2
     end
-    disc_history = disc_history.sort_by {|a| a.x * 10 - a.start_end}
+    #disc_history = disc_history.sort_by{|a| [a.x, - a.start_end]} #This is slow
+    disc_history = disc_history.sort_by{|a| a.x * 10 - a.start_end}
     intersections = 0
     active_intersections = 0
     for log in disc_history do
