@@ -1,0 +1,19 @@
+irb(main):008:0>
+irb(main):009:0> 6 / 2
+=> 3
+irb(main):010:0> 7 / 2
+=> 3
+irb(main):011:0> 7 / 2.to_f
+=> 3.5
+irb(main):012:0> (7 / 2.to_f).ceil
+=> 4
+irb(main):013:0> (6 / 2.to_f).ceil
+=> 3
+irb(main):014:0> 11 / 2.to_f
+=> 5.5
+irb(main):015:0> (11 / 2.to_f).floor
+=> 5
+irb(main):016:0> (10 / 2.to_f).floor
+=> 5
+irb(main):017:0> (11 / 2.to_f).floor - (6 / 2.to_f).ceil + 1
+=> 3
