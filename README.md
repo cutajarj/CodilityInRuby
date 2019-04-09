@@ -3,7 +3,7 @@ Solutions to problems for Codility Lessons in Ruby
 
 The udemy course for this repo can be found at:
 
-https://www.udemy.com/beat-the-codility-coding-interview-in-ruby/?couponCode=3E8YU5
+https://www.udemy.com/beat-the-codility-coding-interview-in-ruby/?couponCode=3E8YU5Z
 
 All of these can be tested at:
 https://codility.com/programmers/lessons/
