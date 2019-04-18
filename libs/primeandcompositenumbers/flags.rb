@@ -4,12 +4,14 @@
 
 class Flags
   def solution(a)
-    peaks = Array.new(a.length, false)
-    for i in 1..a.length - 2 do
-      peaks[i] = true if a[i - 1] < a[i] && a[i + 1] < a[i]
+    next_peak = a.length
+    peaks = Array.new(a.length, next_peak)
+    (a.length - 2).downto(0) do |i|
+      next_peak = i if a[i - 1] < a[i] && a[i] > a[i + 1]
+      peaks[i] = next_peak
     end
 
-    upper_guess = (Math.sqrt(a.length).ceil + 1)
+    upper_guess = (Math.sqrt(a.length).floor + 2)
     lower_guess = 0
     while lower_guess < upper_guess - 1
       current_guess = (lower_guess + upper_guess) / 2
@@ -24,17 +26,14 @@ class Flags
   end
 
   def can_place_flags(peaks, flags_to_place)
-    current_position = 0
-    total_flags = flags_to_place
-    while current_position < peaks.length - 1 && total_flags > 0
-      if peaks[current_position]
-        total_flags -= 1
-        current_position += flags_to_place
-      else
-        current_position += 1
+    current_position = 1 - flags_to_place
+    for i in 0..flags_to_place - 1 do
+      if current_position + flags_to_place > peaks.length - 1
+        return false
       end
+      current_position = peaks[current_position + flags_to_place]
     end
-    total_flags == 0
+    current_position < peaks.length
   end
 
 end
