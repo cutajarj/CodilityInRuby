@@ -2,7 +2,7 @@
 #
 # This is marked as RESPECTABLE difficulty
 
-class Flags
+class FlagsFaster
   def solution(a)
     next_peak = a.length
     peaks = Array.new(a.length, next_peak)
@@ -11,14 +11,18 @@ class Flags
       peaks[i] = next_peak
     end
 
-    current_guess = 0
-    next_guess = 0
-    while can_place_flags(peaks, next_guess)
-      current_guess = next_guess
-      next_guess += 1
+    upper_guess = (Math.sqrt(a.length).floor + 2)
+    lower_guess = 0
+    while lower_guess < upper_guess - 1
+      current_guess = (lower_guess + upper_guess) / 2
+      if can_place_flags(peaks, current_guess)
+        lower_guess = current_guess
+      else
+        upper_guess = current_guess
+      end
     end
 
-    current_guess
+    lower_guess
   end
 
   def can_place_flags(peaks, flags_to_place)
@@ -40,6 +44,6 @@ for i in 0..test_trail.length - 1
 end
 
 start = Time.now()
-puts Flags.new.solution(test_trail)
+puts FlagsFaster.new.solution(test_trail)
 puts Time.now - start
 
