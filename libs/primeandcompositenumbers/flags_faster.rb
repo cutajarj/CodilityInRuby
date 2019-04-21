@@ -4,12 +4,14 @@
 
 class FlagsFaster
   def solution(a)
-    next_peak = a.length
-    peaks = Array.new(a.length, next_peak)
+    ne9xt_peak = a.length
+    peaks = Array.new(a.length)
+    peaks[a.length - 1] = next_peak
     (a.length - 2).downto(0) do |i|
       next_peak = i if a[i - 1] < a[i] && a[i] > a[i + 1]
       peaks[i] = next_peak
     end
+    peaks[0] = next_peak
 
     upper_guess = (Math.sqrt(a.length).floor + 2)
     lower_guess = 0
@@ -38,12 +40,6 @@ class FlagsFaster
 
 end
 
-test_trail = Array.new(100000, 0)
-for i in 0..test_trail.length - 1
-  test_trail[i] += 1 if i % 2 == 1
-end
-
-start = Time.now()
+test_trail = [1,5,3,4,3,4,1,2,3,4,6,2]
 puts FlagsFaster.new.solution(test_trail)
-puts Time.now - start
 
