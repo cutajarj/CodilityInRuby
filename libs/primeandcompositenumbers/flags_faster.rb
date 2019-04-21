@@ -4,7 +4,7 @@
 
 class FlagsFaster
   def solution(a)
-    ne9xt_peak = a.length
+    next_peak = a.length
     peaks = Array.new(a.length)
     peaks[a.length - 1] = next_peak
     (a.length - 2).downto(0) do |i|
