@@ -10,8 +10,8 @@ class CountDistinctSlices
     for tail in 0..a.size - 1 do
       while head < a.size && !in_current_slice[a[head]] do
         in_current_slice[a[head]] = true
+        total_slices += (head - tail) + 1
         head += 1
-        total_slices += (head - tail)
         total_slices = 1000000000 if total_slices > 1000000000
       end
       in_current_slice[a[tail]] = false
