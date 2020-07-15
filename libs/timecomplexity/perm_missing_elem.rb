@@ -1,10 +1,10 @@
 class PermMissingElem
   def solution(a)
-    max_number = a.size + 1
     actual_sum = 0
     for number in a do
       actual_sum += number
     end
+    max_number = a.size + 1
     expected_sum = (max_number * (max_number + 1) / 2)
     expected_sum - actual_sum
   end
